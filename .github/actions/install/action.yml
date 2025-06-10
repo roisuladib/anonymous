@@ -1,0 +1,25 @@
+name: "Install"
+description: "Sets up Node.js and installs dependencies"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install PNPM
+      uses: pnpm/action-setup@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: ".nvmrc"
+        registry-url: "https://registry.npmjs.org"
+        cache: "pnpm"
+
+    - name: Setup Git User
+      shell: bash
+      run: |
+        git config --global user.email "adib17r@gmail.com"
+        git config --global user.name "Muhammad Roisul Adib"
+
+    - name: Install dependencies
+      shell: bash
+      run: pnpm install

@@ -1,0 +1,9 @@
+name: "Build"
+description: "Builds the Next.js app"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run build
+      shell: bash
+      run: pnpm build

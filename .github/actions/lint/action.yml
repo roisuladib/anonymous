@@ -1,0 +1,9 @@
+name: "Lint"
+description: "Runs linter on the codebase"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run ESLint
+      shell: bash
+      run: pnpm lint

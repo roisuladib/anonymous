@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install dependencies
+        uses: ./.github/actions/install
+
+      - name: Validate commit messages
+        if: github.event_name == 'push'
+        run: pnpm dlx commitlint --from=origin/main --to=HEAD --config commitlint.config.ts
+
+      - name: Lint code
+        uses: ./.github/actions/lint
+
+      - name: Build app
+        uses: ./.github/actions/build
