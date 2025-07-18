@@ -2,13 +2,14 @@ import '^/styles/globals.css';
 
 import type { Metadata, Viewport } from 'next';
 
-import { cn } from '@heroui/theme';
 import { Link } from '@heroui/link';
+import { cn } from '@heroui/theme';
 
-import Providers from './providers';
-
+import Navbar from '^/components/navbar';
 import { fonts, siteConfig } from '^/config';
 import ProgressBar from '^/components/progress-bar';
+
+import Providers from './providers';
 
 export const metadata: Metadata = {
   title: {
@@ -35,13 +36,13 @@ export default function RootLayout({ children }: Readonly<Children>) {
       </head>
       <body
         className={cn(
-          'min-h-screen bg-background font-sans text-foreground antialiased',
+          'bg-background text-foreground min-h-screen font-sans antialiased',
           fonts.sans.variable,
           fonts.mono.variable,
         )}>
         <Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
           <div className="relative flex h-screen flex-col">
-            <header>Muldoko</header>
+            <Navbar />
             <main className="mx-auto w-full max-w-7xl grow px-4 pt-16 lg:px-10">{children}</main>
             <footer className="flex w-full items-center justify-center py-3">
               <Link

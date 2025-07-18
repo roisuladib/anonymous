@@ -1,18 +1,18 @@
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-import { defineConfig, globalIgnores } from 'eslint/config';
 import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
+import { defineConfig, globalIgnores } from 'eslint/config';
 import pluginReact from 'eslint-plugin-react';
 import pluginPrettier from 'eslint-plugin-prettier';
 import pluginUnusedImports from 'eslint-plugin-unused-imports';
 import pluginJsxA11Y from 'eslint-plugin-jsx-a11y';
+import globals from 'globals';
 import pluginImport from 'eslint-plugin-import';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
-import globals from 'globals';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -98,7 +98,6 @@ export default defineConfig([
       'react-hooks/exhaustive-deps': 'warn',
       'jsx-a11y/click-events-have-key-events': 'warn',
       'jsx-a11y/interactive-supports-focus': 'warn',
-      'prettier/prettier': 'warn',
       'no-unused-vars': 'off',
       'unused-imports/no-unused-vars': 'off',
       'unused-imports/no-unused-imports': 'warn',
@@ -128,7 +127,7 @@ export default defineConfig([
 
           pathGroups: [
             {
-              pattern: '~/**',
+              pattern: '^/**',
               group: 'external',
               position: 'after',
             },

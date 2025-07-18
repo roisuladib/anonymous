@@ -1,32 +1,26 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+@import "tailwindcss";
 
 @layer base {
-   /* Color Mode transition */
-   ::view-transition-old(root),
-   ::view-transition-new(root) {
-      animation: none;
-      mix-blend-mode: normal;
-   }
-   ::view-transition-old(root) {
-      z-index: 1;
-   }
-   ::view-transition-new(root) {
-      z-index: 2147483646;
-   }
-   .dark::view-transition-old(root) {
-      z-index: 2147483646;
-   }
-   .dark::view-transition-new(root) {
-      z-index: 1;
-   }
-   /* End Color Mode transition */
+  /* Color Mode transition */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+     animation: none;
+     mix-blend-mode: normal;
+  }
+  ::view-transition-old(root) {
+     z-index: 1;
+  }
+  ::view-transition-new(root) {
+     z-index: 2147483646;
+  }
+  .dark::view-transition-old(root) {
+     z-index: 2147483646;
+  }
+  .dark::view-transition-new(root) {
+     z-index: 1;
+  }
+  /* End Color Mode transition */
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
+
+@config "../../tailwind.config.ts"
